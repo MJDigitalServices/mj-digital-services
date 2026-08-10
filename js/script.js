@@ -61,22 +61,43 @@ document.addEventListener("DOMContentLoaded", () => {
   revealElements.forEach(element => revealObserver.observe(element));
 
   // Formulario
-  // Actualmente es una demostración front-end. Para recibir mensajes,
-  // conecta este formulario posteriormente a Formspree, EmailJS o tu backend.
-  form.addEventListener("submit", (event) => {
+  // Envía los datos a FormSubmit (https://formsubmit.co), que reenvía el
+  // mensaje por correo a Ventas@digitalservices.com.co. El primer envío
+  // requiere confirmar el correo de activación que llega la primera vez.
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const data = new FormData(form);
     const nombre = data.get("nombre");
+    const submitBtn = form.querySelector(".form-submit");
 
-    formMessage.textContent =
-      `Gracias${nombre ? `, ${nombre}` : ""}. Tu solicitud ha sido preparada correctamente.`;
+    submitBtn.disabled = true;
+    formMessage.textContent = "Enviando tu solicitud...";
+    formMessage.classList.remove("form-error");
 
-    form.reset();
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data
+      });
 
-    setTimeout(() => {
-      formMessage.textContent = "";
-    }, 5000);
+      if (!response.ok) throw new Error("Respuesta no válida del servidor");
+
+      formMessage.textContent =
+        `Gracias${nombre ? `, ${nombre}` : ""}. Tu solicitud fue enviada correctamente, te contactaremos pronto.`;
+      form.reset();
+    } catch (error) {
+      formMessage.textContent =
+        "No pudimos enviar tu solicitud. Por favor escríbenos directamente por WhatsApp o correo.";
+      formMessage.classList.add("form-error");
+    } finally {
+      submitBtn.disabled = false;
+      setTimeout(() => {
+        formMessage.textContent = "";
+        formMessage.classList.remove("form-error");
+      }, 6000);
+    }
   });
   // Galerías de servicios
   // Puedes agregar más fotos a cada servicio usando el mismo formato:
@@ -86,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Soporte y administración T.I.",
       description: "Trabajos de soporte, administración y acompañamiento tecnológico.",
       images: [
-        { src: "img/proyectos/proyecto-06.png", title: "Soporte T.I.", caption: "Administración y acompañamiento de soluciones tecnológicas." }
+        { src: "img/proyectos/proyecto-06.jpg", title: "Soporte T.I.", caption: "Administración y acompañamiento de soluciones tecnológicas." }
       ]
     },
     2: {
@@ -111,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Control de acceso y biometría",
       description: "Proyectos de control de acceso, biometría y administración de usuarios.",
       images: [
-        { src: "img/proyectos/proyecto-03.png", title: "Control de acceso biométrico", caption: "Instalación de terminal biométrica para control de acceso." }
+        { src: "img/proyectos/proyecto-03.jpg", title: "Control de acceso biométrico", caption: "Instalación de terminal biométrica para control de acceso." }
       ]
     },
     6: {
@@ -119,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Servidores, almacenamiento y demás infraestructura tecnológica.",
       images: [
         { src: "img/proyectos/proyecto-04.jpg", title: "Infraestructura de servidores", caption: "Infraestructura tecnológica para soportar los servicios de la organización." },
-        { src: "img/proyectos/proyecto-02.png", title: "Soluciones tecnológicas", caption: "Soluciones digitales e infraestructura orientadas a la operación empresarial." }
+        { src: "img/proyectos/proyecto-02.jpg", title: "Soluciones tecnológicas", caption: "Soluciones digitales e infraestructura orientadas a la operación empresarial." }
       ]
     }
   };

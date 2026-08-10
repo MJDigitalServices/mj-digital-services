@@ -45,20 +45,31 @@ Por cada trabajo es ideal mostrar:
 Más adelante podemos convertir cada tarjeta en una página individual:
 `proyecto-redes.html`, `proyecto-cctv.html`, etc., con galería completa y descripción técnica.
 
+## Formulario de contacto
+
+El formulario ya está conectado y envía correos de verdad a través de
+[FormSubmit](https://formsubmit.co) a `Ventas@digitalservices.com.co`.
+
+**Importante:** la primera vez que alguien envíe el formulario en producción,
+FormSubmit manda un correo de activación a esa dirección — hay que abrirlo y
+confirmar (un solo clic) para que empiecen a llegar los siguientes mensajes.
+
+Si en el futuro quieres cambiar el correo de destino, edita el `action` del
+`<form id="contactForm">` en `index.html`.
+
 ## Antes de publicar
 
-Reemplaza en `index.html` los datos de contacto de ejemplo:
-- contacto@mjdigitalservices.com
-- +57 300 000 0000
-- enlace de WhatsApp
-- ubicación
-
-También puedes reemplazar las fotos de ejemplo por fotografías reales de tus instalaciones.
-
+Ya no quedan datos de ejemplo — el correo, WhatsApp y ubicación en `index.html`
+son los reales de la empresa. Solo revisa que sigan siendo correctos antes de
+publicar.
 
 ## Ajustes recientes
 
+- Fotos de la galería de proyectos comprimidas (de ~23 MB a ~1 MB) para que la
+  página cargue rápido; los archivos `.png` pesados se convirtieron a `.jpg`.
+- Formulario de contacto conectado a FormSubmit — ya envía correos reales.
+- La sección de "Clientes" ahora es una sección independiente en vez de estar
+  anidada dentro de "Proyectos".
 - Las tarjetas de servicios ahora usan una estructura flexible para que "Más información" no se superponga con el texto.
 - Se mejoró el comportamiento responsive de servicios, portafolio y contacto.
-- Se corrigieron las extensiones mostradas en los placeholders de las fotografías PNG.
 - Se corrigió el número mostrado de WhatsApp para que coincida con el enlace configurado.
