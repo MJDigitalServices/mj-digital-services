@@ -950,6 +950,38 @@ button, input, textarea, select { font: inherit; }
 }
 
 @media (max-width: 720px) {
+  /* Botón de tickets visible también en móviles */
+  .header .nav {
+    gap: 8px;
+  }
+
+  .header .logo {
+    width: 150px;
+    height: 58px;
+    flex-shrink: 1;
+  }
+
+  .header .brand-logo {
+    width: 145px;
+    max-height: 52px;
+  }
+
+  .header .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 9px 10px;
+    font-size: 10px;
+    border-radius: 9px;
+    margin-left: 0;
+  }
+
+  .header .nav-cta span {
+    margin-left: 4px;
+  }
+
+
   .container { width: min(calc(100% - 28px), var(--max)); }
   .header .nav { min-height: 68px; }
   .menu-toggle { display: block; margin-left: auto; }
