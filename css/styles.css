@@ -2240,3 +2240,32 @@ body.gallery-open {
     animation-duration: 24s;
   }
 }
+
+
+/* =========================================================
+   CLIENTES — LOGOS EN ESCALA DE GRISES / COLOR AL PASAR
+   ========================================================= */
+.client-logo {
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.client-logo img {
+  filter: grayscale(100%);
+  opacity: .62;
+  transition: filter .35s ease, opacity .35s ease, transform .35s ease;
+}
+
+.client-logo:hover img,
+.client-logo:focus-within img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+/* Mantiene el efecto también cuando el usuario pasa directamente
+   sobre el logo, sin afectar la animación del carrusel. */
+.client-logo:hover {
+  background: transparent;
+}
