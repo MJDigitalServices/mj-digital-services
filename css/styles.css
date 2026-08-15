@@ -520,6 +520,11 @@ button, input, textarea, select { font: inherit; }
   margin-bottom: 28px;
 }
 
+.service-icon-svg {
+  width: 22px;
+  height: 22px;
+}
+
 .service-number {
   position: absolute;
   top: 26px;
@@ -661,15 +666,23 @@ button, input, textarea, select { font: inherit; }
 .process-number {
   width: 58px;
   height: 58px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
   margin: 0 auto 20px;
   border-radius: 50%;
   border: 1px solid rgba(94,231,255,.25);
   background: rgba(24,182,255,.05);
   color: var(--accent-2);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
+}
+
+.process-icon {
+  width: 19px;
+  height: 19px;
 }
 
 .process-item h3 { font-size: 15px; margin-bottom: 8px; }
@@ -677,7 +690,7 @@ button, input, textarea, select { font: inherit; }
 .process-line {
   width: 55px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(94,231,255,.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(3,152,158,.55), transparent);
   margin-top: 29px;
 }
 
@@ -809,6 +822,37 @@ button, input, textarea, select { font: inherit; }
 .contact-detail small { color: #6f8599; font-size: 9px; }
 .contact-detail strong { font-size: 11px; margin-top: 2px; }
 
+.contact-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.contact-social a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  color: #03989E;
+  background: rgba(3,152,158,.08);
+  border: 1px solid rgba(3,152,158,.22);
+  transition: color .25s ease, transform .25s ease, background .25s ease, border-color .25s ease;
+}
+
+.contact-social a svg {
+  width: 19px;
+  height: 19px;
+}
+
+.contact-social a:hover,
+.contact-social a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(3,152,158,.16);
+  border-color: rgba(3,152,158,.4);
+}
+
 .contact-form {
   padding: 32px;
   border-radius: 20px;
@@ -863,7 +907,7 @@ button, input, textarea, select { font: inherit; }
 .form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
 /* Footer */
-.footer { background: #050c15; border-top: 1px solid var(--line); }
+.footer { background: #050c15; border-top: 1px solid rgba(3,152,158,.45); }
 
 .footer-top {
   display: grid;
@@ -892,6 +936,32 @@ button, input, textarea, select { font: inherit; }
   border-top: 1px solid var(--line);
   color: #526477;
   font-size: 9px;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: rgba(3,152,158,.75);
+  transition: color .25s ease, transform .25s ease, opacity .25s ease;
+}
+
+.footer-social a svg {
+  width: 17px;
+  height: 17px;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  color: #03989E;
+  transform: translateY(-2px);
 }
 
 /* WhatsApp */
@@ -1165,12 +1235,12 @@ h2 span {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--ds-blue), #075cc7);
-  box-shadow: 0 12px 30px rgba(0,74,173,.28);
+  background: var(--ds-turq);
+  box-shadow: 0 12px 30px rgba(3,152,158,.28);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 16px 38px rgba(0,74,173,.42);
+  box-shadow: 0 16px 38px rgba(3,152,158,.42);
 }
 
 /* Tarjeta central: banda blanca inspirada en el logo */
@@ -1277,12 +1347,17 @@ h2 span {
   background: linear-gradient(145deg, rgba(10,29,46,.96), rgba(5,16,28,.98));
   box-shadow: 0 16px 45px rgba(0,0,0,.16);
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  -webkit-tap-highlight-color: rgba(10,33,52,.55);
+}
+
+.portfolio-card * {
+  -webkit-tap-highlight-color: rgba(10,33,52,.55);
 }
 
 .portfolio-card:hover {
   transform: translateY(-7px);
   border-color: rgba(3,152,158,.42);
-  box-shadow: 0 24px 60px rgba(0,0,0,.28);
+  box-shadow: 0 24px 60px rgba(0,0,0,.28), 0 0 22px rgba(3,152,158,.22);
 }
 
 .portfolio-featured {
@@ -1436,9 +1511,7 @@ h2 span {
 
 /* CTA */
 .cta-box {
-  background:
-    linear-gradient(120deg, rgba(0,74,173,.92), rgba(3,152,158,.72)),
-    #004AAD;
+  background: #0A2134;
 }
 
 /* WhatsApp */
@@ -1876,7 +1949,7 @@ h2 span {
   justify-content: center;
   overflow: hidden;
   border-radius: 16px;
-  background: #030a12;
+  background: #0A2134;
   border: 1px solid rgba(255,255,255,.08);
 }
 
@@ -2115,7 +2188,7 @@ body.gallery-open {
 
 @keyframes clientsScroll {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 12px)); }
+  to { transform: translateX(var(--clients-shift, calc(-50% - 12px))); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2208,7 +2281,7 @@ body.gallery-open {
 
 @keyframes clientsScrollCompact {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 7px)); }
+  to { transform: translateX(var(--clients-shift, calc(-50% - 7px))); }
 }
 
 @media (max-width: 700px) {
@@ -2243,12 +2316,19 @@ body.gallery-open {
 
 
 /* =========================================================
-   CLIENTES — LOGOS EN ESCALA DE GRISES / COLOR AL PASAR
+   CLIENTES — TARJETA CON FONDO E IDENTIDAD DE MARCA
    ========================================================= */
 .client-logo {
-  border: 0;
-  background: transparent;
-  border-radius: 0;
+  border: 1.5px solid #03989E;
+  background: #0A2134;
+  border-radius: 16px;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.client-logo:hover,
+.client-logo:focus-within {
+  border-color: #03989E;
+  box-shadow: 0 0 16px rgba(3,152,158,.45);
 }
 
 .client-logo img {
@@ -2264,8 +2344,10 @@ body.gallery-open {
   transform: scale(1.04);
 }
 
-/* Mantiene el efecto también cuando el usuario pasa directamente
-   sobre el logo, sin afectar la animación del carrusel. */
-.client-logo:hover {
-  background: transparent;
+/* WhatsApp icon image (logo proporcionado por el cliente) */
+.whatsapp-icon-img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  display: block;
 }

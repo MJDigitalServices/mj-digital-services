@@ -12,6 +12,79 @@ document.addEventListener("DOMContentLoaded", () => {
   // Año automático
   if (year) year.textContent = new Date().getFullYear();
 
+  // Carrusel de logos de clientes: loop infinito y "seamless".
+  //
+  // La animación siempre se desplaza exactamente el ancho de UN set completo
+  // de los 8 logos originales (los marcados con data-master="true"), por lo
+  // que el logo que entra al reiniciar el ciclo es visualmente idéntico al
+  // que había al inicio y el reinicio no se nota.
+  //
+  // Para que nunca se vea un hueco vacío en pantallas anchas, el script
+  // clona automáticamente el set de 8 logos las veces que hagan falta hasta
+  // que el carrusel tenga contenido de sobra para cubrir el ancho visible
+  // (más un margen), en lugar de depender de una cantidad fija de copias.
+  const clientsTrack = document.querySelector(".clients-track");
+  const clientsSlider = document.querySelector(".clients-slider");
+
+  if (clientsTrack && clientsSlider) {
+    const masterItems = Array.from(
+      clientsTrack.querySelectorAll('.client-logo[data-master="true"]')
+    );
+    const masterCount = masterItems.length;
+
+    const appendClonedSet = () => {
+      masterItems.forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.removeAttribute("data-master");
+        clone.setAttribute("aria-hidden", "true");
+        const img = clone.querySelector("img");
+        if (img) {
+          img.setAttribute("alt", "");
+          img.setAttribute("aria-hidden", "true");
+        }
+        clientsTrack.appendChild(clone);
+      });
+    };
+
+    const ensureEnoughClones = () => {
+      if (masterCount < 1) return;
+      const sliderWidth = clientsSlider.getBoundingClientRect().width;
+      // El track debe ser más ancho que "lo visible + un set completo",
+      // así, en cualquier punto del ciclo (incluso justo antes de
+      // reiniciar), siempre hay logos de sobra listos para mostrarse.
+      let guard = 0; // evita loops infinitos ante casos extremos
+      while (
+        clientsTrack.scrollWidth < sliderWidth * 2 + 600 &&
+        guard < 40
+      ) {
+        appendClonedSet();
+        guard++;
+      }
+    };
+
+    const updateClientsLoop = () => {
+      if (masterCount < 1) return;
+      ensureEnoughClones();
+      const items = clientsTrack.children;
+      if (items.length <= masterCount) return;
+      const firstLeft = items[0].offsetLeft;
+      const repeatLeft = items[masterCount].offsetLeft;
+      const distance = repeatLeft - firstLeft;
+      if (distance > 0) {
+        clientsTrack.style.setProperty("--clients-shift", `-${distance}px`);
+      }
+    };
+
+    updateClientsLoop();
+    window.addEventListener("load", updateClientsLoop);
+
+    let clientsResizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(clientsResizeTimer);
+      clientsResizeTimer = setTimeout(updateClientsLoop, 150);
+    });
+  }
+
   // Header al hacer scroll
   const updateHeader = () => {
     header.classList.toggle("scrolled", window.scrollY > 30);
