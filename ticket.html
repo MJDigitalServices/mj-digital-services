@@ -24,29 +24,30 @@
 <meta name="twitter:description" content="Abre tu ticket de soporte en segundos y sigue el estado de tu caso en tiempo real.">
 <meta name="twitter:image" content="https://placehold.co/1200x630/0F1620/2DD4BF?text=M%26J+Digital+Services&font=raleway">
 
-<link rel="icon" type="image/png" href="https://placehold.co/64x64/0F1620/2DD4BF?text=MJ">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="img/favicon/favicon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root{
-    --bg:#0B1018;
-    --bg-2:#0E1520;
-    --surface:#161F2E;
-    --surface-2:#1D2A3E;
-    --line:#28374E;
-    --teal:#2DD4BF;
-    --teal-soft:#5EEAD4;
-    --teal-dim:#164E48;
-    --violet:#8B7CF6;
+    --bg:#06111f;
+    --bg-2:#0A1728;
+    --surface:#0D1D30;
+    --surface-2:#10253B;
+    --line:#1C3854;
+    --teal:#22D3EE;
+    --teal-soft:#67E8F9;
+    --teal-dim:#0B4A63;
+    --violet:#1D8CF8;
     --amber:#F59E0B;
     --red:#F87171;
-    --text:#EAF0F6;
-    --text-muted:#8A98AE;
+    --text:#F3F8FC;
+    --text-muted:#8EA5BD;
     --radius:12px;
-    --grad-brand: linear-gradient(135deg, var(--teal) 0%, var(--violet) 130%);
+    --grad-brand: linear-gradient(135deg, var(--teal) 0%, var(--violet) 100%);
     --shadow-soft: 0 10px 30px -12px rgba(0,0,0,0.55);
-    --shadow-glow: 0 0 0 1px rgba(45,212,191,0.18), 0 8px 24px -8px rgba(45,212,191,0.25);
+    --shadow-glow: 0 0 0 1px rgba(34,211,238,0.18), 0 8px 24px -8px rgba(34,211,238,0.25);
     --ease: cubic-bezier(.22,1,.36,1);
   }
   *{box-sizing:border-box;}
@@ -54,8 +55,8 @@
   body{
     margin:0;
     background:
-      radial-gradient(900px 500px at 12% -10%, rgba(139,124,246,0.14), transparent 60%),
-      radial-gradient(900px 600px at 110% 10%, rgba(45,212,191,0.10), transparent 55%),
+      radial-gradient(900px 500px at 12% -10%, rgba(29,140,248,0.14), transparent 60%),
+      radial-gradient(900px 600px at 110% 10%, rgba(34,211,238,0.10), transparent 55%),
       var(--bg);
     background-attachment:fixed;
     color:var(--text);
@@ -67,7 +68,7 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
   }
-  ::selection{background:var(--teal);color:#062824;}
+  ::selection{background:var(--teal);color:#031522;}
   .mono{font-family:'JetBrains Mono',monospace;}
   h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
 
@@ -75,7 +76,7 @@
   .topbar{
     display:flex;align-items:center;justify-content:space-between;
     padding:18px 28px;border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg, rgba(45,212,191,0.07), transparent);
+    background:linear-gradient(180deg, rgba(34,211,238,0.07), transparent);
     backdrop-filter:blur(8px);
     position:sticky;top:0;z-index:40;
   }
@@ -93,7 +94,7 @@
     color:var(--text-muted);transition:all .2s var(--ease);
   }
   .nav-tab:hover{color:var(--text);}
-  .nav-tab.active{background:var(--grad-brand);color:#062824;box-shadow:var(--shadow-glow);}
+  .nav-tab.active{background:var(--grad-brand);color:#031522;box-shadow:var(--shadow-glow);}
 
   .wrap{max-width:920px;margin:0 auto;padding:36px 24px 80px;}
   .view{display:none;}
@@ -153,7 +154,7 @@
     padding:11px 12px;border-radius:8px;font-size:14px;font-family:inherit;outline:none;
     transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
   }
-  input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(45,212,191,0.15);}
+  input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(34,211,238,0.15);}
   input:hover,select:hover,textarea:hover{border-color:#3A4E6B;}
   textarea{resize:vertical;min-height:100px;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
@@ -162,7 +163,7 @@
   .btn{
     position:relative;overflow:hidden;isolation:isolate;
     display:inline-flex;align-items:center;gap:8px;
-    background:var(--grad-brand);color:#062824;border:none;padding:12px 22px;
+    background:var(--grad-brand);color:#031522;border:none;padding:12px 22px;
     border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit;
     box-shadow:var(--shadow-glow);
     transition:transform .2s var(--ease), box-shadow .2s var(--ease);
@@ -173,7 +174,7 @@
     transform:translateX(-120%);
     transition:transform .6s var(--ease);
   }
-  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(45,212,191,0.4), var(--shadow-glow);}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(34,211,238,0.4), var(--shadow-glow);}
   .btn:hover::before{transform:translateX(120%);}
   .btn:active{transform:translateY(0) scale(0.98);}
   .btn:disabled{opacity:.6;cursor:default;transform:none;}
@@ -227,7 +228,7 @@
   .badge{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.3px;}
   .badge.open{background:rgba(248,113,113,0.15);color:var(--red);}
   .badge.progress{background:rgba(245,158,11,0.15);color:var(--amber);}
-  .badge.resolved{background:rgba(45,212,191,0.15);color:var(--teal);}
+  .badge.resolved{background:rgba(34,211,238,0.15);color:var(--teal);}
   .badge.closed{background:rgba(133,147,168,0.15);color:var(--text-muted);}
 
   .prio{width:8px;height:8px;border-radius:50%;display:inline-block;}
@@ -464,6 +465,10 @@
     }
   }
 
+
+  /* Paleta M&J Digital Services: azul profundo + cyan tecnológico */
+  .btn.secondary:hover{border-color:var(--teal);color:var(--teal-soft);}
+  .nav-tab.active{background:var(--grad-brand);color:#031522;}
 </style>
 </head>
 <body>
