@@ -280,12 +280,12 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
   z-index:2;
 }
 
-/* La barra se posiciona de forma independiente, sin mover el contenido del Hero.
-   En escritorio queda en la zona superior derecha indicada en la referencia. */
+/* Barra de indicadores en PC: alineada horizontalmente con el inicio del título principal.
+   Solo afecta escritorio; las reglas móviles posteriores conservan su comportamiento. */
 .stats-bar{
   position:absolute;
   z-index:5;
-  top:78px;
+  top:205px;
   right:225px;
   left:auto;
   width:700px;
