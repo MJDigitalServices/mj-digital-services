@@ -222,9 +222,30 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
   .camera{width:72px;height:56px;right:2%;bottom:8%}
   .server-stack{right:5%;bottom:0;width:70px}
 
-  .stats-bar{grid-template-columns:1fr;padding:18px}
-  .stat-item{padding:8px 0;border-bottom:1px solid #163149}
+  /* Barra de indicadores en móvil: conserva la posición original y solo se desplaza unos píxeles a la izquierda. */
+  .stats-bar{
+    position:absolute;
+    top:225px;
+    right:-75px;
+    left:auto;
+    width:220px;
+    max-width:none;
+    margin:0;
+    padding:14px 16px;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  .stat-item{
+    min-width:0;
+    padding:13px 0;
+    border-right:0;
+    border-bottom:1px solid #163149;
+    gap:10px;
+  }
   .stat-item:last-child{border-bottom:0}
+  .stat-icon{font-size:22px;flex:0 0 22px}
+  .stat-item strong{font-size:16px;white-space:nowrap}
+  .stat-item small{font-size:8px;line-height:1.25}
   .solution-grid,.project-grid{grid-template-columns:1fr}
   .capability-list{grid-template-columns:repeat(2,1fr)}
   .projects-heading{align-items:start;flex-direction:column;gap:18px}
@@ -285,7 +306,7 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
   }
 }
 
-@media(max-width:850px){
+@media (min-width:561px) and (max-width:850px){
   .stats-bar{
     position:relative;
     top:auto;
@@ -296,5 +317,54 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
     margin-top:20px;
     transform:none;
   }
-  
+}
+
+/* Ajuste móvil definitivo de la barra de indicadores.
+   En PC no modifica la posición existente. En móvil reserva espacio lateral
+   para que la barra y el texto principal convivan sin superponerse. */
+@media (max-width:560px){
+  .stats-bar{
+    position:absolute;
+    top:270px;
+    right:0;
+    left:auto;
+    width:150px;
+    max-width:150px;
+    margin:0;
+    padding:10px 10px;
+    grid-template-columns:1fr;
+    gap:0;
+    transform:none;
+    z-index:5;
+  }
+  .hero-copy{
+    width:calc(100% - 162px);
+    max-width:none;
+    margin:0;
+    align-self:flex-start;
+  }
+  .stat-item{
+    min-width:0;
+    padding:12px 0;
+    border-right:0;
+    border-bottom:1px solid #163149;
+    gap:8px;
+  }
+  .stat-item:last-child{border-bottom:0}
+  .stat-icon{font-size:18px;flex:0 0 18px}
+  .stat-item strong{font-size:14px;white-space:nowrap}
+  .stat-item small{font-size:7px;line-height:1.25;letter-spacing:.25px}
+}
+@media (max-width:380px){
+  .stats-bar{
+    top:262px;
+    width:142px;
+    max-width:142px;
+    padding:9px 9px;
+  }
+  .hero-copy{width:calc(100% - 153px)}
+  .stat-item{gap:7px;padding:11px 0}
+  .stat-icon{font-size:17px;flex-basis:17px}
+  .stat-item strong{font-size:13px}
+  .stat-item small{font-size:6.5px}
 }
