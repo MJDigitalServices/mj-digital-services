@@ -148,7 +148,8 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
 .footer-brand img{width:150px}.footer-brand p{font-size:10px;color:#718596;line-height:1.6;max-width:220px}
 .footer-links{display:grid;align-content:start;gap:9px}.footer-links h4{font-size:9px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}.footer-links a,.footer-links span{font-size:10px;color:#8294a5}.footer-links a:hover{color:var(--cyan)}
 .footer-bottom{border-top:1px solid #102437;padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#647889;font-size:9px}.footer-social{display:flex;gap:18px}.footer-social a:hover{color:var(--cyan)}
-.whatsapp-float{position:fixed;right:24px;bottom:22px;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;font-size:30px;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:90;border:3px solid #0a1a26}.whatsapp-float:hover{transform:scale(1.06)}
+.whatsapp-float{position:fixed;right:24px;bottom:22px;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#1fa3aa;box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 0 1px rgba(31,163,170,.18);z-index:90;border:3px solid #0a1a26;text-decoration:none;transition:transform .2s ease,filter .2s ease;overflow:hidden}.whatsapp-icon{width:37px;height:37px;display:block;object-fit:contain}.whatsapp-float:hover{transform:scale(1.06);filter:brightness(1.08)}
+.whatsapp-detail-icon{display:grid;place-items:center;overflow:hidden}.whatsapp-detail-icon img{width:26px;height:26px;display:block;object-fit:contain}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
@@ -231,7 +232,7 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
   .check-list{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column}
-  .whatsapp-float{right:16px;bottom:16px;width:52px;height:52px}
+  .whatsapp-float{right:16px;bottom:16px;width:52px;height:52px}.whatsapp-float .whatsapp-icon{width:34px;height:34px}
 }
 @media(max-width:380px){
   .hero{padding-top:108px}
