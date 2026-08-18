@@ -35,7 +35,7 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
 .menu-toggle span{display:block;width:25px;height:2px;background:#fff;margin:5px}
 
 /* Hero */
-.hero{min-height:700px;position:relative;display:flex;align-items:center;padding:110px 0 75px;overflow:hidden;background:linear-gradient(90deg,rgba(3,10,18,.88) 0%,rgba(3,10,18,.64) 34%,rgba(3,10,18,.12) 72%,rgba(3,10,18,.48) 100%),url("../img/referencia/hero-tecnologia.png") center center/cover no-repeat}
+.hero{min-height:700px;position:relative;display:flex;align-items:center;padding:110px 0 75px;overflow:hidden;background:linear-gradient(90deg,rgba(3,10,18,.88) 0%,rgba(3,10,18,.64) 34%,rgba(3,10,18,.12) 72%,rgba(3,10,18,.48) 100%),url("../img/referencia/hero-tecnologia.jpg") center center/cover no-repeat}
 .hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at 62% 40%,rgba(0,190,255,.20),transparent 30%),linear-gradient(180deg,rgba(0,0,0,.15),rgba(3,10,18,.72))}
 .hero-grid{position:absolute;inset:42% -10% -15%;background:linear-gradient(rgba(0,199,242,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(0,199,242,.18) 1px,transparent 1px);background-size:45px 45px;transform:perspective(400px) rotateX(58deg);opacity:.22}
 .hero-content{position:relative;z-index:2;display:grid;grid-template-columns:52% 48%;align-items:center}
@@ -116,7 +116,7 @@ h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
 
 /* CTA */
 .cta-section{padding:0 0 54px}
-.cta-box{min-height:170px;border:1px solid #1e6687;border-radius:8px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:35px 40px;background:linear-gradient(90deg,rgba(5,18,31,.94),rgba(5,18,31,.36)),url("../img/referencia/cta-proyecto.png") center center/cover}
+.cta-box{min-height:170px;border:1px solid #1e6687;border-radius:8px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:35px 40px;background:linear-gradient(90deg,rgba(5,18,31,.94),rgba(5,18,31,.36)),url("../img/referencia/cta-proyecto.jpg") center center/cover}
 .cta-box:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(0,199,242,.16),transparent 30%);pointer-events:none}
 .cta-copy{position:relative;z-index:2}.cta-copy h2{font-size:30px;line-height:1.02;margin:10px 0 6px}.cta-copy p{margin:0;color:var(--cyan);font-weight:600}.cta-box .btn{position:relative;z-index:2}
 
